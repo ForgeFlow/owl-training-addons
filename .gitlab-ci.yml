@@ -1,0 +1,3 @@
+include:
+  - project: "forgeflow/forgeflow-ci-templates"
+    file: "/odoo-addons/lint-and-test-oca-ci-v18-ee.yml"
