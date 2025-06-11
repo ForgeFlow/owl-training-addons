@@ -10,13 +10,12 @@
         "security/ir.model.access.csv",
         "views/todo_item.xml",
     ],
-    # "assets": {
-    #     "web.assets_backend": [
-    #         "owl_todo_list/static/src/components/**/*.js",
-    #         "owl_todo_list/static/src/components/**/*.xml",
-    #         "owl_todo_list/static/src/components/**/*.scss",
-    #     ],
-    # },
+    "assets": {
+        "web.assets_backend": [
+            "owl_todo_list/static/src/components/**/*.js",
+            "owl_todo_list/static/src/components/**/*.xml",
+        ],
+    },
     "installable": True,
     "application": True,
 }

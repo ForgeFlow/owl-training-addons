@@ -42,7 +42,7 @@
         <field name="tag">owl_todo_list.action_todo_list_js</field>
     </record>
 
-    <menuitem name="OWL App" id="menu_owl_tutorial" sequence="10">
+    <menuitem name="Todo list App" id="menu_owl_tutorial" sequence="10">
         <menuitem
             name="Todo List"
             id="menu_owl_todo_list"
