@@ -16,12 +16,12 @@ include_wkhtmltopdf: false
 odoo_test_flavor: Both
 odoo_version: 18.0
 org_name: ForgeFlow
-org_slug: forgeflow
+org_slug: ForgeFlow
 rebel_module_groups: []
-repo_description: owl-custom-addons
-repo_name: owl-custom-addons
-repo_slug: owl-custom-addons
-repo_website: https://gitlab.forgeflow.io/forgeflow/owl-custom-addons
+repo_description: owl-training-addons
+repo_name: owl-training-addons
+repo_slug: owl-training-addons
+repo_website: https://github.com/ForgeFlow/owl-training-addons
 use_pyproject_toml: true
 use_ruff: true
 

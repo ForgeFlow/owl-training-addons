@@ -1,15 +1,15 @@
 
 <!-- /!\ Non OCA Context : Set here the badge of your runbot / runboat instance. -->
-[![Pre-commit Status](https://github.com/forgeflow/owl-custom-addons/actions/workflows/pre-commit.yml/badge.svg?branch=18.0)](https://github.com/forgeflow/owl-custom-addons/actions/workflows/pre-commit.yml?query=branch%3A18.0)
-[![Build Status](https://github.com/forgeflow/owl-custom-addons/actions/workflows/test.yml/badge.svg?branch=18.0)](https://github.com/forgeflow/owl-custom-addons/actions/workflows/test.yml?query=branch%3A18.0)
-[![codecov](https://codecov.io/gh/forgeflow/owl-custom-addons/branch/18.0/graph/badge.svg)](https://codecov.io/gh/forgeflow/owl-custom-addons)
+[![Pre-commit Status](https://github.com/ForgeFlow/owl-training-addons/actions/workflows/pre-commit.yml/badge.svg?branch=18.0)](https://github.com/ForgeFlow/owl-training-addons/actions/workflows/pre-commit.yml?query=branch%3A18.0)
+[![Build Status](https://github.com/ForgeFlow/owl-training-addons/actions/workflows/test.yml/badge.svg?branch=18.0)](https://github.com/ForgeFlow/owl-training-addons/actions/workflows/test.yml?query=branch%3A18.0)
+[![codecov](https://codecov.io/gh/ForgeFlow/owl-training-addons/branch/18.0/graph/badge.svg)](https://codecov.io/gh/ForgeFlow/owl-training-addons)
 <!-- /!\ Non OCA Context : Set here the badge of your translation instance. -->
 
 <!-- /!\ do not modify above this line -->
 
-# owl-custom-addons
+# owl-training-addons
 
-owl-custom-addons
+owl-training-addons
 
 <!-- /!\ do not modify below this line -->
 

@@ -48,13 +48,13 @@ repos:
       # update the NOT INSTALLABLE ADDONS section above
       - id: oca-update-pre-commit-excluded-addons
       - id: oca-fix-manifest-website
-        args: ["https://gitlab.forgeflow.io/forgeflow/owl-custom-addons"]
+        args: ["https://github.com/ForgeFlow/owl-training-addons"]
       - id: oca-gen-addon-readme
         args:
           - --addons-dir=.
           - --branch=18.0
-          - --org-name=forgeflow
-          - --repo-name=owl-custom-addons
+          - --org-name=ForgeFlow
+          - --repo-name=owl-training-addons
           - --if-source-changed
           - --keep-source-digest
           - --convert-fragments-to-markdown
