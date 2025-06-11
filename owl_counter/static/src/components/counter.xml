@@ -2,10 +2,8 @@
 <templates xml:space="preserve">
 
     <t t-name="owl_counter.Counter" owl="1">
-
         <div>
             <div class="counters-container">
-
                 <div class="row mx-2 mt-3">
                     <div class="col-lg-6">
                         <button
@@ -61,7 +59,6 @@
                         </table>
                     </div>
                 </div>
-
             </div>
         </div>
     </t>

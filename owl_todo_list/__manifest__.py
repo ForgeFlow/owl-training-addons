@@ -4,7 +4,7 @@
     "summary": "Owl Todo List",
     "depends": ["web"],
     "author": "ForgeFlow",
-    "website": "https://gitlab.forgeflow.io/forgeflow/owl-custom-addons",
+    "website": "https://github.com/ForgeFlow/owl-training-addons",
     "license": "AGPL-3",
     "data": [
         "security/ir.model.access.csv",

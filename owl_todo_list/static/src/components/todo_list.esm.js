@@ -1,5 +1,3 @@
-/** @odoo-module **/
-
 import {Component, onWillStart, useRef, useState} from "@odoo/owl";
 import {registry} from "@web/core/registry";
 import {useService} from "@web/core/utils/hooks";

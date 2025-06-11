@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-
     <record id="owl_todo_tree_view" model="ir.ui.view">
         <field name="name">owl.todo.tree.form.view</field>
         <field name="model">todo.item</field>
@@ -56,5 +55,4 @@
             action="action_owl_todo_list_js"
         />
     </menuitem>
-
 </odoo>
