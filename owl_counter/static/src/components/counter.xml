@@ -53,7 +53,7 @@
                                         >Increment</button>
                                         <button
                                             class="btn btn-danger"
-                                            t-on-click="()=>this.deleteCounter(counter.id)"
+                                            t-on-click="()=>this.deleteCounter(counter)"
                                         >Delete</button>
                                     </td>
                                 </tr>

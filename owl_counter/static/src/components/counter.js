@@ -37,8 +37,8 @@ export class Counter extends Component {
         await this.loadCount();
     }
 
-    async deleteCounter(counterId) {
-        await this.orm.unlink(this.model, [Id]);
+    async deleteCounter(counter) {
+        await this.orm.unlink(this.model, [counter.id]);
         await this.loadCount();
     }
 
