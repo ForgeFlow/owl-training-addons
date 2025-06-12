@@ -1,4 +1,5 @@
-import {Component, onWillStart, useRef, useState} from "@odoo/owl";
+import {Component, onWillStart, useState} from "@odoo/owl";
+import {FormViewDialog} from "@web/views/view_dialogs/form_view_dialog";
 import {registry} from "@web/core/registry";
 import {useService} from "@web/core/utils/hooks";
 
@@ -7,23 +8,21 @@ export class OwlTodoList extends Component {
         this.model = "todo.item";
         this.orm = useService("orm");
         this.notification = useService("notification");
-
-        this.closeModalButton = useRef("closeModalButton");
-        this.searchInput = useRef("searchInput");
-        this.nameInput = useRef("nameInput");
+        this.dialogService = useService("dialog");
+        this.action = useService("action");
 
         this.state = useState({
             taskList: [],
-            task: {name: "", color: "#ffc0f0", completed: false, priority: "low"},
-            isEdit: false,
-            activeId: false,
             priorityOptions: [],
         });
 
         onWillStart(async () => {
-            await this.getAllTasks();
-            const options = await this.orm.call(this.model, "get_priority_options");
-            this.state.priorityOptions = options;
+            await this._load();
+            this.state.priorityOptions = await this.orm.call(
+                this.model,
+                "get_priority_options",
+                []
+            );
         });
     }
 
@@ -35,64 +34,65 @@ export class OwlTodoList extends Component {
         );
     }
 
+    async _load() {
+        this.state.taskList = await this.orm.searchRead(
+            this.model,
+            [],
+            ["name", "color", "completed", "priority"]
+        );
+    }
+
+    async _openForm(resId = null) {
+        const result = await new Promise((resolve) => {
+            this.dialogService.add(
+                FormViewDialog,
+                {
+                    resModel: this.model,
+                    resId,
+                    title: resId ? "Edit Task" : "New Task",
+                    preventCreate: false,
+                    onRecordSaved: () => resolve(true),
+                },
+                {onClose: () => resolve(false)}
+            );
+        });
+        if (result) await this._load();
+    }
+
     addTask() {
-        this.resetForm();
-        this.state.isEdit = false;
-        this.state.activeId = false;
+        this._openForm();
     }
 
     editTask(task) {
-        this.resetForm();
-        this.state.isEdit = true;
-        this.state.activeId = task.id;
-        this.state.task = {...task};
-    }
-
-    async saveTask() {
-        if (this.state.task.name === "") {
-            this.displayNotification("Name is required.");
-            this.nameInput.el.classList.add("is-invalid");
-            setTimeout(() => {
-                this.nameInput.el.classList.remove("is-invalid");
-            }, 2000);
-            return;
-        }
-
-        if (this.state.isEdit) {
-            await this.orm.write(this.model, [this.state.activeId], this.state.task);
-        } else {
-            await this.orm.create(this.model, [this.state.task]);
-        }
-        await this.getAllTasks();
-        this.closeModalButton.el.click();
-    }
-
-    resetForm() {
-        this.state.task = {
-            name: "",
-            color: "#ffc0f0",
-            completed: false,
-            priority: "low",
-        };
+        this._openForm(task.id);
     }
 
     async deleteTask(task) {
-        await this.orm.unlink(this.model, [task.id]);
-        await this.getAllTasks();
+        try {
+            await this.orm.unlink(this.model, [task.id]);
+            await this._load();
+        } catch {
+            this.notification.add("Couldn't delete task", {type: "danger"});
+        }
     }
 
-    async searchTasks() {
-        const text = this.searchInput.el.value;
-        this.state.taskList = await this.orm.searchRead(
-            this.model,
-            [["name", "ilike", text]],
-            ["name", "color", "completed", "priority"]
-        );
+    openInForm(task) {
+        this.action.doAction({
+            type: "ir.actions.act_window",
+            res_model: this.model,
+            res_id: task.id,
+            views: [[false, "form"]],
+            target: "current",
+        });
     }
 
     async toggleTask(e, task) {
         await this.orm.write(this.model, [task.id], {completed: e.target.checked});
         await this.getAllTasks();
+        this.notification.add(
+            e.target.checked ? "Task marked completed" : "Task marked incomplete",
+            {type: "success"}
+        );
     }
 
     async updateColor(e, task) {
@@ -103,10 +103,7 @@ export class OwlTodoList extends Component {
     async updatePriority(e, task) {
         await this.orm.write(this.model, [task.id], {priority: e.target.value});
         await this.getAllTasks();
-    }
-
-    displayNotification(text) {
-        this.notification.add(text, {type: "danger"});
+        this.notification.add("Priority updated successfully", {type: "success"});
     }
 }
 
