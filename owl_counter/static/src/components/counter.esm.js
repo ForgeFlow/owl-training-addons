@@ -33,6 +33,11 @@ export class Counter extends Component {
         await this.orm.write(this.model, [counter.id], counter);
         await this.loadCount();
     }
+
+    async deleteCounter(counter) {
+        await this.orm.unlink(this.model, [counter.id]);
+        await this.loadCount();
+    }
 }
 
 Counter.template = "owl_counter.Counter";

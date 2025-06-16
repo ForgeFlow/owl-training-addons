@@ -43,6 +43,10 @@
                                             style="margin-right: 10px;"
                                             t-on-click="()=>this.increment(counter)"
                                         >Increment</button>
+                                        <button
+                                            class="btn btn-danger"
+                                            t-on-click="()=>this.deleteCounter(counter)"
+                                        >Delete</button>
                                     </td>
                                 </tr>
                             </tbody>
