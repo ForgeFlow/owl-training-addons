@@ -29,7 +29,11 @@
                                 >
                                     <td style="vertical-align: middle;">
                                         <div>
-                                            <span t-esc="counter.name" />
+                                            <input
+                                                t-model="counter.name"
+                                                class="form-control"
+                                                t-on-change="(e)=>this.updateName(e, counter)"
+                                            />
                                         </div>
                                     </td>
                                     <td style="vertical-align: middle;">
