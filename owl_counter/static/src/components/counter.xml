@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="owl_counter.Counter">
+        <div>
+            <div class="counters-container">
+                <div class="row mx-2 mt-3">
+                    <div class="col-lg-6">
+                        <button
+                            class="btn btn-primary"
+                            t-on-click="addCounter"
+                        >New</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-2">
+                <div class="col">
+                    <table class="table table-striped table-hover border">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Count</th>
+                                <th scope="col" />
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                t-foreach="state.counterList"
+                                t-as="counter"
+                                t-key="counter.id"
+                            >
+                                <td style="vertical-align: middle;">
+                                    <input
+                                        t-model="counter.name"
+                                        class="form-control"
+                                        t-on-change="(e)=>this.updateName(e, counter)"
+                                    />
+                                </td>
+                                <td style="vertical-align: middle;">
+                                    <div>
+                                        <span t-esc="counter.count" />
+                                    </div>
+                                </td>
+                                <td style="text-align: right">
+                                    <button
+                                        class="btn btn-warning"
+                                        style="margin-right: 10px;"
+                                        t-on-click="()=>this.increment(counter)"
+                                    >Increment</button>
+                                    <button
+                                        class="btn btn-danger"
+                                        t-on-click="()=>this.deleteCounter(counter)"
+                                    >Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>
