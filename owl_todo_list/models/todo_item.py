@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class TodoItem(models.Model):
@@ -17,3 +17,10 @@ class TodoItem(models.Model):
         default="low",
         required=True,
     )
+
+    @api.model
+    def get_priority_options(self):
+        return [
+            {"value": str(key), "text": value}
+            for key, value in self._fields["priority"].selection
+        ]

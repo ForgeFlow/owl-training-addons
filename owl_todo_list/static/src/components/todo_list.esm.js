@@ -8,6 +8,7 @@ export class OwlTodoList extends Component {
         this.model = "todo.item";
         this.orm = useService("orm");
         this.dialogService = useService("dialog");
+        this.priorityOptions = [];
 
         this.state = useState({
             taskList: [],
@@ -15,6 +16,11 @@ export class OwlTodoList extends Component {
 
         onWillStart(async () => {
             await this.getAllTasks();
+            this.priorityOptions = await this.orm.call(
+                this.model,
+                "get_priority_options",
+                []
+            );
         });
     }
 
@@ -48,6 +54,11 @@ export class OwlTodoList extends Component {
     }
     editTask(task) {
         this._openForm(task.id);
+    }
+
+    async updatePriority(e, task) {
+        await this.orm.write(this.model, [task.id], {priority: e.target.value});
+        await this.getAllTasks();
     }
 }
 
