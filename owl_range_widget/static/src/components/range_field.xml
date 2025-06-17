@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <templates xml:space="preserve">
 
-    <t t-name="owl_view_widget_inheritance.RangeField" owl="1">
+    <t t-name="owl_range_widget.RangeField">
         <div>
-            <label for="customRange" class="form-label">
-                <span t-esc="props.record.data.expected_salary" />
+            <label for="rangeField" class="form-label">
+                <t t-esc="props.record.data.expected_salary" />
                 <span class="ms-1" t-esc="currency" />
             </label>
             <input
                 type="range"
                 class="form-range"
-                id="customRange"
+                id="rangeField"
                 min="0"
-                max="10000"
+                max="100000"
                 step="100"
                 t-att-value="props.record.data.expected_salary"
                 t-on-change="(ev) => {

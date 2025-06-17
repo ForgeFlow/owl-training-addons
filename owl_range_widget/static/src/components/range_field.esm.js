@@ -4,7 +4,7 @@ import {getCurrency} from "@web/core/currency";
 import {registry} from "@web/core/registry";
 import {standardFieldProps} from "@web/views/fields/standard_field_props";
 
-class RangeField extends Component {
+export class RangeField extends Component {
     setup() {
         const currency_id = this.props.record.data.currency_id;
         // Get the currency symbol from the currency_id
@@ -19,7 +19,7 @@ export const rangeField = {
     supportedTypes: ["integer"],
 };
 
-RangeField.template = "owl_view_widget_inheritance.RangeField";
+RangeField.template = "owl_range_widget.RangeField";
 // Pulling the reactive record system Odoo uses for fields
 RangeField.props = {...standardFieldProps};
 registry.category("fields").add("range", rangeField);
