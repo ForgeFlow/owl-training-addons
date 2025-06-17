@@ -15,7 +15,11 @@
                 max="10000"
                 step="100"
                 t-att-value="props.record.data.expected_salary"
-                t-on-change="(ev) => this.props.record.update({ [this.props.name]: ev.target.value })"
+                t-on-change="(ev) => {
+                    this.props.record.update(
+                        { [this.props.name]: +ev.target.value }
+                    );
+                }"
             />
         </div>
     </t>

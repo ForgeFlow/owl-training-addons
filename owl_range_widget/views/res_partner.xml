@@ -6,6 +6,7 @@
         <field name="inherit_id" ref="base.view_partner_form" />
         <field name="arch" type="xml">
             <field name="website" position="before">
+                <field name="expected_salary" />
                 <field name="expected_salary" widget="range" />
             </field>
         </field>
