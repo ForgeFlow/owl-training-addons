@@ -1,3 +1,4 @@
+import {ConfirmationDialog} from "@web/core/confirmation_dialog/confirmation_dialog";
 import {FormController} from "@web/views/form/form_controller";
 import {_t} from "@web/core/l10n/translation";
 import {patch} from "@web/core/utils/patch";
@@ -34,5 +35,21 @@ patch(FormController.prototype, {
             title: _t("Duplicate Record"),
         });
         return result;
+    },
+
+    async discard() {
+        this.dialogService.add(ConfirmationDialog, {
+            body: _t("Are you sure you want to discard the changes?"),
+            confirmLabel: _t("Discard"),
+            confirm: async () => {
+                await super.discard(...arguments);
+            },
+            cancel: async () => {
+                this.notification.add(_t("Changes not discarded."), {
+                    title: _t("Discard changes"),
+                    type: "warning",
+                });
+            },
+        });
     },
 });
