@@ -1,1 +1,0 @@
-This module creates an interactive counter widget that displays a list of counters stored in the my.counter model. Users can create, increment, rename, and delete counters from a simple UI rendered using OWL.
