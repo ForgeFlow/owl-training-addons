@@ -47,22 +47,11 @@
                                     />
                                 </td>
                                 <td>
-                                    <select
-                                        class="form-select"
-                                        t-on-change="(e)=>this.updatePriority(e, task)"
-                                    >
-                                        <t
-                                            t-foreach="priorityOptions"
-                                            t-as="option"
-                                            t-key="option.value"
-                                        >
-                                            <option
-                                                t-att-selected="task.priority == option.value"
-                                                t-att-value="option.value"
-                                                t-att-label="option.text"
-                                            />
-                                        </t>
-                                    </select>
+                                    <Selector
+                                        value="task.priority"
+                                        options="priorityOptions"
+                                        onChange.bind="(e) => this.updatePriority(e, task)"
+                                    />
                                 </td>
                                 <td class="text-end">
                                     <button
