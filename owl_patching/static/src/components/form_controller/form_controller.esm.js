@@ -15,8 +15,8 @@ patch(FormController.prototype, {
     async create() {
         const result = await super.create(...arguments);
         this.notification.add(_t("Record created successfully!"), {
-            title: _t("Create record"),
             type: "info",
+            title: _t("Create Record"),
         });
         return result;
     },
@@ -24,8 +24,17 @@ patch(FormController.prototype, {
     async save() {
         const result = await super.save(...arguments);
         this.notification.add(_t("Record saved successfully!"), {
-            title: _t("Save record"),
             type: "success",
+            title: _t("Save Record"),
+        });
+        return result;
+    },
+
+    async duplicateRecord() {
+        const result = await super.duplicateRecord(...arguments);
+        this.notification.add(_t("Record duplicated successfully!"), {
+            type: "warning",
+            title: _t("Duplicate Record"),
         });
         return result;
     },
@@ -44,14 +53,5 @@ patch(FormController.prototype, {
                 });
             },
         });
-    },
-
-    async duplicateRecord() {
-        const result = await super.duplicateRecord(...arguments);
-        this.notification.add(_t("Record duplicated successfully!"), {
-            title: _t("Duplicate record"),
-            type: "warning",
-        });
-        return result;
     },
 });

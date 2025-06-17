@@ -6,16 +6,31 @@ import {
 import {patch} from "@web/core/utils/patch";
 
 patch(EmailField, {
-    defaultProps: {
-        ...EmailField.defaultProps,
-        colorProps: "inherit",
-        bgColorProps: "inherit",
-    },
     props: {
         ...EmailField.props,
         colorProps: {type: String, optional: true},
         bgColorProps: {type: String, optional: true},
     },
+    defaultProps: {
+        ...EmailField.defaultProps,
+        colorProps: "inherit",
+        bgColorProps: "inherit",
+    },
+    supportedOptions: [
+        ...(EmailField.supportedOptions || []),
+        {
+            label: "Color Props",
+            name: "colorProps",
+            type: "string",
+            default: "inherit",
+        },
+        {
+            label: "Background Color Props",
+            name: "bgColorProps",
+            type: "string",
+            default: "inherit",
+        },
+    ],
 });
 
 const patchDescr = () => ({
