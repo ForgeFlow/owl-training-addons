@@ -5,6 +5,7 @@
         <div>
             <label for="rangeField" class="form-label">
                 <t t-esc="props.record.data.expected_salary" />
+                <span class="ms-1" t-esc="currency" />
             </label>
             <input
                 type="range"

@@ -1,9 +1,15 @@
 import {Component} from "@odoo/owl";
 import {_t} from "@web/core/l10n/translation";
-import {standardFieldProps} from "@web/views/fields/standard_field_props";
+import {getCurrency} from "@web/core/currency";
 import {registry} from "@web/core/registry";
+import {standardFieldProps} from "@web/views/fields/standard_field_props";
 
-export class RangeField extends Component {}
+export class RangeField extends Component {
+    setup() {
+        const currency_id = this.props.record.data.currency_id;
+        this.currency = getCurrency?.(currency_id?.[0])?.symbol || "";
+    }
+}
 
 export const rangeField = {
     component: RangeField,
