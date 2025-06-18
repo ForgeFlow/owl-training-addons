@@ -4,6 +4,22 @@
     <t t-name="owl_dashboard.OwlDashboard" owl="1">
         <div class="container">
             <h1>Dashboard</h1>
+            <div class="card m-1 p-1">
+                <h2>Number of sale orders of current month</h2>
+                <p>TODO</p>
+            </div>
+            <div class="card m-1 p-1">
+                <h2>Number of new customers of current month</h2>
+                <p>TODO</p>
+            </div>
+            <div class="card m-1 p-1">
+                <h2>Table of number of sales for months on last 12 months</h2>
+                <p>TODO</p>
+            </div>
+            <div class="card m-1 p-1">
+                <h2>Selector of month/year to change the information shown</h2>
+                <p>TODO</p>
+            </div>
         </div>
     </t>
 
