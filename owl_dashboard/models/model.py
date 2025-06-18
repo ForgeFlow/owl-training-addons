@@ -14,7 +14,7 @@ class Model(models.Model):
         date = datetime.datetime.now()
         month_start = datetime.date(date.year, date.month, 1)
         sales_order = self.env["sale.order"].search(
-            [("expected_date", ">=", month_start), ("expected_date", "<=", date)]
+            [("commitment_date", ">=", month_start), ("commitment_date", "<=", date)]
         )
         sales_order_count = len(sales_order)
         new_customers = self.env["res.partner"].search(
@@ -25,3 +25,16 @@ class Model(models.Model):
             "salesOrderCount": sales_order_count,
             "newCustomersCount": new_customers_count,
         }
+
+    @api.model
+    def get_table(self, year, month):
+        return [
+            ["2025-06", 1],
+            ["2025-05", 2],
+            ["2025-04", 3],
+            ["2025-03", 4],
+            ["2025-02", 5],
+            ["2025-01", 6],
+            ["2024-12", 7],
+            ["2024-11", 8],
+        ]
