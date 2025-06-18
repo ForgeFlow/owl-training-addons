@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="owl_dashboard.OwlDashboard" owl="1">
+        <div class="container">
+            <h1>Dashboard</h1>
+        </div>
+    </t>
+
+</templates>

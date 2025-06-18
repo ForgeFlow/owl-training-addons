@@ -1,0 +1,55 @@
+import {Component, onWillStart, useState} from "@odoo/owl";
+import {FormViewDialog} from "@web/views/view_dialogs/form_view_dialog";
+import { registry } from "@web/core/registry";
+import { useService} from "@web/core/utils/hooks";
+import {Selector} from "./selector/selector.esm";
+
+export class OwlDashboard extends Component {
+    setup() {
+        this.model = "model";
+        this.orm = useService("orm");
+        this.dialogService = useService("dialog");
+        this.priorityOptions = [];
+        this.notification = useService("notification");
+        this.action = useService("action");
+
+        this.state = useState({
+            taskList: [],
+        });
+
+        onWillStart(async () => {
+        });
+    }
+
+    async _openForm(resid = null ) {
+        const result = await new Promise((resolve) => {
+            this.dialogService.add(
+                FormViewDialog,
+                {
+                    resModel: this.model,
+                    resId: resid,
+                    title: resid ? "Edit" : "New",
+                    preventCreate : false,
+                    onRecordSaved: () => resolve(true),
+                },
+                {onClose: () => resolve(false)}
+            );
+        });
+        if (result) await new Promise();
+    }
+
+    openInForm(task) {
+        this.action.doAction({
+            type: "ir.actions.act_window",
+            res_model: this.model,
+            res_id: task.id,
+            views: [[false, "form"]],
+            target: "current",
+        });
+    }
+
+}
+
+OwlDashboard.template = "owl_dashboard.OwlDashboard";
+OwlDashboard.components = {Selector};
+registry.category("actions").add("owl_dashboard.action_dashboard_js", OwlDashboard)
