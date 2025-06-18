@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_owl_counter_js" model="ir.actions.client">
+        <field name="name">Counters</field>
+        <field name="tag">owl_counter.action_counter_list</field>
+    </record>
+
+    <menuitem name="Counter App" id="menu_owl_counter" sequence="10">
+        <menuitem
+            name="Counter Owl"
+            id="menu_owl_counter_js"
+            sequence="10"
+            action="action_owl_counter_js"
+        />
+    </menuitem>
+</odoo>
