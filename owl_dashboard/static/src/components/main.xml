@@ -19,14 +19,36 @@
             <div class="card m-1 p-1">
                 <h2>Table of number of sales for months on last 12 months</h2>
                 <p>
-                    <t t-esc="state.numberOfSalesForLast12Months"/>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Month</th>
+                                <th>Sales count</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="state.numberOfSalesForLast12Months" t-as="month" t-key="month">
+                                <tr>
+                                    <td>
+                                        <t t-esc="month[0]"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="month[1]"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
                 </p>
             </div>
             <div class="card m-1 p-1">
                 <h2>Selector of month/year to change the information shown</h2>
                 <p>
-                    <t t-esc="state.selectedYear"/>
-                    <t t-esc="state.selectedMonth"/>
+                    <!-- prefer not using selector now -->
+                    <!-- <Selector value="state.selectedYear" options="yearOptions" onChange.bind="(e) => this.updateYear(e, val)" />
+                    <Selector value="state.selectedMonth" options="monthOptions" onChange.bind="(e) => this.updateMonth(e, val)" /> -->
+                    <input type="number" t-model="state.selectedYear"/>
+                    <input type="number" t-model="state.selectedMonth"/>
                 </p>
             </div>
         </div>

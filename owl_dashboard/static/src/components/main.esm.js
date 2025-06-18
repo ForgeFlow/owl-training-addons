@@ -9,9 +9,10 @@ export class OwlDashboard extends Component {
         this.model = "model";
         this.orm = useService("orm");
         this.dialogService = useService("dialog");
-        this.priorityOptions = [];
         this.notification = useService("notification");
         this.action = useService("action");
+        // this.yearOptions = [2025, 2024, 2023, 2022, 2021, 2020];
+        // this.monthOptions = [1,2,3,4,5,6,7,8,9,10,11,12];
 
         this.state = useState({
             salesOrderCount: 0,
