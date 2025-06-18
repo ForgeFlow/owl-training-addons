@@ -14,7 +14,20 @@ export class OwlDashboard extends Component {
         this.action = useService("action");
 
         this.state = useState({
-            taskList: [],
+            salesOrderCount: 0,
+            newCustomersCount: 0,
+            numberOfSalesForLast12Months: [
+                ["2025-06", 0],
+                ["2025-05", 0],
+                ["2025-04", 0],
+                ["2025-03", 0],
+                ["2025-02", 0],
+                ["2025-01", 0],
+                ["2024-12", 0],
+                ["2024-11", 0],
+            ],
+            selectedYear: 2025,
+            selectedMonth: 6,
         });
 
         onWillStart(async () => {

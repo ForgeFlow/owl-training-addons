@@ -6,19 +6,28 @@
             <h1>Dashboard</h1>
             <div class="card m-1 p-1">
                 <h2>Number of sale orders of current month</h2>
-                <p>TODO</p>
+                <p>
+                    <t t-esc="state.salesOrderCount"/>
+                </p>
             </div>
             <div class="card m-1 p-1">
                 <h2>Number of new customers of current month</h2>
-                <p>TODO</p>
+                <p>
+                    <t t-esc="state.newCustomersCount"/>
+                </p>
             </div>
             <div class="card m-1 p-1">
                 <h2>Table of number of sales for months on last 12 months</h2>
-                <p>TODO</p>
+                <p>
+                    <t t-esc="state.numberOfSalesForLast12Months"/>
+                </p>
             </div>
             <div class="card m-1 p-1">
                 <h2>Selector of month/year to change the information shown</h2>
-                <p>TODO</p>
+                <p>
+                    <t t-esc="state.selectedYear"/>
+                    <t t-esc="state.selectedMonth"/>
+                </p>
             </div>
         </div>
     </t>
