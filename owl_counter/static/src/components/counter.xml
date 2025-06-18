@@ -28,9 +28,11 @@
                                     t-key="counter.id"
                                 >
                                     <td style="vertical-align: middle;">
-                                        <div>
-                                            <span t-esc="counter.name" />
-                                        </div>
+                                        <input
+                                            t-model="counter.name"
+                                            class="form-control"
+                                            t-on-change="(e)=>this.updateName(e, counter)"
+                                        />
                                     </td>
                                     <td style="vertical-align: middle;">
                                         <div>
@@ -43,6 +45,10 @@
                                             style="margin-right: 10px;"
                                             t-on-click="()=>this.increment(counter)"
                                         >Increment</button>
+                                        <button
+                                            class="btn btn-danger"
+                                            t-on-click="()=>this.deleteCounter(counter)"
+                                        >Delete</button>
                                     </td>
                                 </tr>
                             </tbody>
