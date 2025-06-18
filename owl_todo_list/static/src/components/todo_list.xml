@@ -23,14 +23,28 @@
                         <tbody>
                             <tr t-foreach="state.taskList" t-as="task" t-key="task.id">
                                 <td>
-                                    <div>
-                                        <span t-esc="task.name" />
-                                    </div>
+                                    <input
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        t-att-id="task.id"
+                                        t-att-checked="task.completed"
+                                        t-on-click="(e)=>this.toggleTask(e, task)"
+                                        style="margin-right: 10px;"
+                                    />
+                                    <a
+                                        href="#"
+                                        t-on-click="()=>this.openInForm(task)"
+                                        t-esc="task.name"
+                                    />
                                 </td>
                                 <td>
-                                    <div>
-                                        <span t-esc="task.color" />
-                                    </div>
+                                    <input
+                                        type="color"
+                                        class="form-control form-control-color"
+                                        id="colorInput"
+                                        t-att-value="task.color"
+                                        t-on-change="(e)=>this.updateColor(e, task)"
+                                    />
                                 </td>
                                 <td>
                                     <select
@@ -55,6 +69,10 @@
                                         class="btn btn-sm btn-secondary me-2"
                                         t-on-click="()=>this.editTask(task)"
                                     >Edit</button>
+                                    <button
+                                        class="btn btn-sm btn-danger"
+                                        t-on-click="()=>this.deleteTask(task)"
+                                        >Delete</button>
                                 </td>
                             </tr>
                         </tbody>

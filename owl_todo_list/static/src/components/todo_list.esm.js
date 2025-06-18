@@ -9,6 +9,8 @@ export class OwlTodoList extends Component {
         this.orm = useService("orm");
         this.dialogService = useService("dialog");
         this.priorityOptions = [];
+        this.notification = useService("notification");
+        this.action = useService("action");
 
         this.state = useState({
             taskList: [],
@@ -43,6 +45,39 @@ export class OwlTodoList extends Component {
             );
         });
         if (result) await this.getAllTasks();
+    }
+
+    openInForm(task) {
+        this.action.doAction({
+            type: "ir.actions.act_window",
+            res_model: this.model,
+            res_id: task.id,
+            views: [[false, "form"]],
+            target: "current",
+        });
+    }
+
+    async deleteTask(task) {
+        try {
+            await this.orm.unlink(this.model, [task.id]);
+            await this.getAllTasks();
+        } catch {
+            this.notification.add("Couldn't delete task", {type: "danger"});
+        }
+    }
+
+    async toggleTask(e, task) {
+        await this.orm.write(this.model, [task.id], {completed: e.target.checked});
+        await this.getAllTasks();
+        this.notification.add(
+            e.target.checked ? "Task marked completed" : "Task marked incomplete",
+            {type: "success"}
+        );
+    }
+
+    async updateColor(e, task) {
+        await this.orm.write(this.model, [task.id], {color: e.target.value});
+        await this.getAllTasks();
     }
 
     addTask() {
