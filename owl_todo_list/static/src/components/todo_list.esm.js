@@ -2,6 +2,7 @@ import {Component, onWillStart, useState} from "@odoo/owl";
 import {FormViewDialog} from "@web/views/view_dialogs/form_view_dialog";
 import { registry } from "@web/core/registry";
 import { useService} from "@web/core/utils/hooks";
+import {Selector} from "./selector/selector.esm";
 
 export class OwlTodoList extends Component {
     setup() {
@@ -95,4 +96,5 @@ export class OwlTodoList extends Component {
 }
 
 OwlTodoList.template = "owl_todo_list.OwlTodoList";
+OwlTodoList.components = {Selector};
 registry.category("actions").add("owl_todo_list.action_todo_list_js", OwlTodoList)
