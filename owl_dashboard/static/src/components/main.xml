@@ -27,7 +27,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <t t-foreach="state.numberOfSalesForLast12Months" t-as="month" t-key="month">
+                            <t t-foreach="state.numberOfSalesForLast12Months" t-as="month" t-key="month[0]">
                                 <tr>
                                     <td>
                                         <t t-esc="month[0]"/>
@@ -47,8 +47,8 @@
                     <!-- prefer not using selector now -->
                     <!-- <Selector value="state.selectedYear" options="yearOptions" onChange.bind="(e) => this.updateYear(e, val)" />
                     <Selector value="state.selectedMonth" options="monthOptions" onChange.bind="(e) => this.updateMonth(e, val)" /> -->
-                    <input type="number" t-model="state.selectedYear"/>
-                    <input type="number" t-model="state.selectedMonth"/>
+                    <input type="number" t-model.number="state.selectedYear" t-on-change="requestTable"/>
+                    <input type="number" t-model.number="state.selectedMonth" t-on-change="requestTable"/>
                 </p>
             </div>
         </div>

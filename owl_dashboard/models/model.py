@@ -28,7 +28,10 @@ class Model(models.Model):
 
     @api.model
     def get_table(self, year, month):
+        next_month_start = datetime.date(year, month, 1)
+        month_end = next_month_start - datetime.timedelta(days=1)
         return [
+            [f"{year}-{str(month).rjust(2, '0')}", 999],
             ["2025-06", 1],
             ["2025-05", 2],
             ["2025-04", 3],
