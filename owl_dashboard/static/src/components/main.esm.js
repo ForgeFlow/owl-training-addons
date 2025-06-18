@@ -32,6 +32,14 @@ export class OwlDashboard extends Component {
         });
 
         onWillStart(async () => {
+            let vals = await this.orm.call(
+                this.model,
+                "get_values",
+                []
+            );
+            console.log(vals);
+            this.state.salesOrderCount = vals.salesOrderCount
+            this.state.newCustomersCount = vals.newCustomersCount
         });
     }
 
