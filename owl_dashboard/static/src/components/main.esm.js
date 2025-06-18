@@ -37,11 +37,16 @@ export class OwlDashboard extends Component {
             this.state.salesOrderCount = vals.salesOrderCount;
             this.state.newCustomersCount = vals.newCustomersCount;
 
-            this.requestTable()
+            this.requestTable();
         });
     }
 
     async requestTable() {
+        if (this.state.selectedMonth > 12) {
+            this.state.selectedMonth = 12;
+        } else if (this.state.selectedMonth < 1) {
+            this.state.selectedMonth = 1;
+        }
         let vals = await this.orm.call(this.model, "get_table", [
             this.state.selectedYear,
             this.state.selectedMonth,
