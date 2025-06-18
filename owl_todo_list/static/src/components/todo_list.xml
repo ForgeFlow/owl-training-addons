@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+  <t t-name="owl_todo_list.OwlTodoList" owl="1">
+        <div class="todo-list-container">
+            <div class="row mx-2 mt-3">
+                <div class="col-lg-6">
+                    <button class="btn btn-primary" t-on-click="addTask">New</button>
+                </div>
+            </div>
+
+            <div class="row m-2">
+                <div class="col">
+                    <table class="table table-striped table-hover border">
+                        <thead>
+                            <tr>
+                                <th scope="col">Task</th>
+                                <th scope="col">Color</th>
+                                <th scope="col">Priority</th>
+                                <th scope="col" />
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="state.taskList" t-as="task" t-key="task.id">
+                                <td>
+                                    <div>
+                                        <span t-esc="task.name" />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <span t-esc="task.color" />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <span t-esc="task.priority" />
+                                    </div>
+                                </td>
+                                <td class="text-end">
+                                    <button
+                                        class="btn btn-sm btn-secondary me-2"
+                                        t-on-click="()=>this.editTask(task)"
+                                    >Edit</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>
