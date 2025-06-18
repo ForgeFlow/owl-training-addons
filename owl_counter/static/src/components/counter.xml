@@ -18,6 +18,7 @@
                                 <tr>
                                     <th scope="col">Name</th>
                                     <th scope="col">Count</th>
+                                    <th scope="col" />
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,6 +36,13 @@
                                         <div>
                                             <span t-esc="counter.count" />
                                         </div>
+                                    </td>
+                                    <td style="text-align: right">
+                                        <button
+                                            class="btn btn-warning"
+                                            style="margin-right: 10px;"
+                                            t-on-click="()=>this.increment(counter)"
+                                        >Increment</button>
                                     </td>
                                 </tr>
                             </tbody>
