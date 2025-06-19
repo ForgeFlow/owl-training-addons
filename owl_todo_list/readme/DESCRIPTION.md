@@ -1,1 +1,0 @@
-This module implements a dynamic to-do list widget for the todo.item model. Users can create, edit, search, and delete tasks through a modern UI. Tasks include fields like name, color, completion status, and priority. The widget uses modals and form controls to provide an intuitive and responsive task management experience.
