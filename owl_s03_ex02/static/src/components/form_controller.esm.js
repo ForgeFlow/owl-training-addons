@@ -14,6 +14,7 @@ patch(FormController.prototype, {
             this.effect.add({
                 message: "Thanks for saving!",
                 type: "rainbow_man",
+                img_url: "/mail/static/src/img/odoobot_transparent.png",
             });
         }
         return result;
