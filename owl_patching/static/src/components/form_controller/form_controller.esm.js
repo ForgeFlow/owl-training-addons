@@ -17,4 +17,22 @@ patch(FormController.prototype, {
         });
         return result;
     },
+
+    async save() {
+        const result = await super.save(...arguments);
+        this.notification.add(_t("Record saved successfully!"), {
+            type: "success",
+            title: _t("Save Record"),
+        });
+        return result;
+    },
+
+    async duplicateRecord() {
+        const result = await super.duplicateRecord(...arguments);
+        this.notification.add(_t("Record duplicated successfully!"), {
+            type: "warning",
+            title: _t("Duplicate Record"),
+        });
+        return result;
+    },
 });
