@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="res_partner_form_view_inherit" model="ir.ui.view">
+        <field name="name">res.partner.form.view.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <field name="website" position="before">
+                <field name="hash_value" widget="hash" size="42" placeholder="Click on the wand ->"/>
+                <field name="hash_value_ro" widget="hash" />
+            </field>
+        </field>
+    </record>
+</odoo>
