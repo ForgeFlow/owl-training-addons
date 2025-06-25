@@ -15,6 +15,9 @@
             "owl_todo_list/static/src/components/**/*.js",
             "owl_todo_list/static/src/components/**/*.xml",
         ],
+        "web.assets_unit_tests": [
+            "owl_todo_list/static/tests/**/*",
+        ],
     },
     "installable": True,
     "application": True,

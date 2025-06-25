@@ -5,7 +5,7 @@
         <div class="todo-list-container">
             <div class="row mx-2 mt-3">
                 <div class="col-lg-6">
-                    <button class="btn btn-primary" t-on-click="addTask">New</button>
+                    <button class="btn btn-primary todo-list-create" t-on-click="addTask">New</button>
                 </div>
             </div>
 
@@ -21,10 +21,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr t-foreach="state.taskList" t-as="task" t-key="task.id">
+                            <tr t-foreach="state.taskList" t-as="task" t-key="task.id" class="todo-item" >
                                 <td>
                                     <input
-                                        class="form-check-input"
+                                        class="form-check-input todo-item-completed"
                                         type="checkbox"
                                         t-att-id="task.id"
                                         t-att-checked="task.completed"
@@ -33,14 +33,15 @@
                                     />
                                     <a
                                         href="#"
-                                        t-on-click="()=>this.openInForm(task)"
+                                        class="todo-item-name"
+                                        t-on-click="()=>this.editTask(task)"
                                         t-esc="task.name"
                                     />
                                 </td>
                                 <td>
                                     <input
                                         type="color"
-                                        class="form-control form-control-color"
+                                        class="form-control form-control-color todo-item-color"
                                         id="colorInput"
                                         t-att-value="task.color"
                                         t-on-change="(e)=>this.updateColor(e, task)"
@@ -48,7 +49,7 @@
                                 </td>
                                 <td>
                                     <select
-                                        class="form-select"
+                                        class="form-select todo-item-priority"
                                         t-on-change="(e)=>this.updatePriority(e, task)"
                                     >
                                         <t
@@ -66,12 +67,12 @@
                                 </td>
                                 <td class="text-end">
                                     <button
-                                        class="btn btn-sm btn-secondary me-2"
-                                        t-on-click="()=>this.editTask(task)"
+                                        class="btn btn-sm btn-secondary me-2 todo-item-edit"
+                                        t-on-click.prevent="()=>this.editTask(task)"
                                     >Edit</button>
                                     <button
                                         class="btn btn-sm btn-danger"
-                                        t-on-click="()=>this.deleteTask(task)"
+                                        t-on-click.stop="()=>this.deleteTask(task)"
                                     >Delete</button>
                                 </td>
                             </tr>
