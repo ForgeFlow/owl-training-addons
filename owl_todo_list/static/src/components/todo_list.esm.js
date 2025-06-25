@@ -42,7 +42,7 @@ export class OwlTodoList extends Component {
         );
     }
 
-    async _openForm(resId = null) {
+    async _openForm(resId = false) {
         const result = await new Promise((resolve) => {
             this.dialogService.add(
                 FormViewDialog,
