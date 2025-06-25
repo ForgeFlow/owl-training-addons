@@ -16,6 +16,9 @@
             "owl_counter/static/src/components/**/*.xml",
             "owl_counter/static/src/components/**/*.scss",
         ],
+        "web.assets_unit_tests": [
+            "owl_counter/static/tests/**/*",
+        ],
     },
     "application": True,
 }
