@@ -12,6 +12,9 @@
             "owl_patching/static/src/components/**/*.js",
             "owl_patching/static/src/components/**/*.xml",
         ],
+        "web.assets_unit_tests": [
+            "owl_patching/static/tests/**/*",
+        ],
     },
     "installable": True,
     "application": False,
