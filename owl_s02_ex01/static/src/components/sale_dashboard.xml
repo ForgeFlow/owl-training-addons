@@ -57,7 +57,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row o_dashboard_cards">
                         <NumberCard
                             title="'Sale orders'"
                             subtitle="'in this month'"

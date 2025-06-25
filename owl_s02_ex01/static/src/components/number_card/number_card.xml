@@ -5,7 +5,7 @@
         <div class="col-lg m-0 p-0">
             <div class="text-center shadow-sm border m-2 p-4">
                 <div class="h1 fw-bold my-1">
-                    <span t-esc="props.value" />
+                    <span t-esc="props.value" class="o_number_card_value" />
                 </div>
                 <div class="h3 text-muted pt-2">
                     <span t-esc="props.title" />
