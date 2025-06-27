@@ -2,7 +2,7 @@ import {expect, test} from "@odoo/hoot";
 import {animationFrame, click, edit, select} from "@odoo/hoot-dom";
 import {MockServer, contains, mountWithCleanup} from "@web/../tests/web_test_helpers";
 
-import {OwlTodoList} from "@owl_todo_list/components/todo_list.esm";  
+import {OwlTodoList} from "@owl_todo_list/components/todo_list.esm";
 
 test("OwlTodoList: Click on Complete", async () => {
     await mountWithCleanup(OwlTodoList);
@@ -49,7 +49,7 @@ test("OwlTodoList: Creating New", async () => {
     await animationFrame();
     expect(".o_form_view").toHaveCount(1);
     click(".o_form_view .o_field_widget[name='name'] input");
-    await animationFrame(); 
+    await animationFrame();
     edit("New Task");
     await animationFrame();
     click(".o_form_button_save");
@@ -64,7 +64,9 @@ test("OwlTodoList: Edit a task", async () => {
     click(".todo-list-container .todo-item .todo-item-edit");
     await animationFrame();
     expect(".o_form_view").toHaveCount(1);
-    expect(".o_form_view .o_field_widget[name='name'] input").toHaveValue("Buy groceries");
+    expect(".o_form_view .o_field_widget[name='name'] input").toHaveValue(
+        "Buy groceries"
+    );
 });
 
 test("OwlTodoList: Edit through name", async () => {
@@ -74,7 +76,9 @@ test("OwlTodoList: Edit through name", async () => {
     click(".todo-list-container .todo-item .todo-item-name");
     await animationFrame();
     expect(".o_form_view").toHaveCount(1);
-    expect(".o_form_view .o_field_widget[name='name'] input").toHaveValue("Buy groceries");
+    expect(".o_form_view .o_field_widget[name='name'] input").toHaveValue(
+        "Buy groceries"
+    );
 });
 
-//TODO: Add a test for deleting a task
+// TODO: Add a test for deleting a task

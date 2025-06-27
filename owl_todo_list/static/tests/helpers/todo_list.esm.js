@@ -2,9 +2,7 @@ import {defineModels, fields, models, onRpc} from "@web/../tests/web_test_helper
 
 export class TodoItem extends models.Model {
     _name = "todo.item";
-    _records = [
-        {id: 1, name: "Buy groceries", completed: false},
-    ];
+    _records = [{id: 1, name: "Buy groceries", completed: false}];
     name = fields.Char({string: "Task"});
     completed = fields.Boolean({string: "Completed"});
     priority = fields.Selection({
@@ -13,7 +11,8 @@ export class TodoItem extends models.Model {
             ["low", "Low"],
             ["intermediate", "Intermediate"],
             ["high", "High"],
-        ], default: "intermediate",
+        ],
+        default: "intermediate",
     });
     color = fields.Char({default: "#ffffff"});
     _views = {
@@ -28,9 +27,9 @@ export class TodoItem extends models.Model {
                     </group>
                 </sheet>
             </form>
-        `
-    }
-};
+        `,
+    };
+}
 
 defineModels([TodoItem]);
 
