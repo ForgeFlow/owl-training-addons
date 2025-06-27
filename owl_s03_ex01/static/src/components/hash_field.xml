@@ -10,7 +10,7 @@
                 <input class="o_input" type="text" t-att-value="value" t-ref="input" />
                 <button
                     t-if="!props.record.data[props.name]"
-                    class="btn btn-secondary ms-3 fa fa-magic"
+                    class="btn btn-secondary ms-3 fa fa-magic o_generate_hash_button"
                     title="Generate Hash"
                     t-on-click="generateHash"
                 />

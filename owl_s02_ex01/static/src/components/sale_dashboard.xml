@@ -2,7 +2,7 @@
 <templates xml:space="preserve">
 
     <t t-name="owl_s02_ex01.SaleDashboard">
-        <div class="overflow-auto h-100">
+        <div class="overflow-auto h-100 sale_dashboard_container">
             <div class="row m-3">
                 <div class="col-12">
                     <div class="row">
@@ -19,7 +19,7 @@
                                             <span class="text-muted">Month</span>
                                         </div>
                                         <select
-                                            class="form-select"
+                                            class="form-select sale_dashboard_month_select"
                                             t-on-change="onMonthChange"
                                         >
                                             <t
@@ -45,7 +45,7 @@
                                         </div>
                                         <input
                                             type="number"
-                                            class="form-control"
+                                            class="form-control sale_dashboard_year_select"
                                             t-on-change="onYearChange"
                                             min="2000"
                                             max="2100"
@@ -62,11 +62,13 @@
                             title="'Sale orders'"
                             subtitle="'in this month'"
                             value="this.state.SOLastMonth"
+                            extraClass="'sale_dashboard_order_count'"
                         />
                         <NumberCard
                             title="'New customers'"
                             subtitle="'in this month'"
                             value="this.state.newCustomersLastMonth"
+                            extraClass="'sale_dashboard_customer_count'"
                         />
                     </div>
                     <div class="row">

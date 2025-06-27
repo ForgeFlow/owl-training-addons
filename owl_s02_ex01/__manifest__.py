@@ -13,6 +13,9 @@
             "owl_s02_ex01/static/src/components/**/*.xml",
             "owl_s02_ex01/static/src/components/**/*.scss",
         ],
+        "web.assets_unit_tests": [
+            "owl_s02_ex01/static/tests/**/*",
+        ],
     },
     "application": True,
 }

@@ -5,7 +5,10 @@
         <div class="todo-list-container">
             <div class="row mx-2 mt-3">
                 <div class="col-lg-6">
-                    <button class="btn btn-primary todo-list-create" t-on-click="addTask">New</button>
+                    <button
+                        class="btn btn-primary todo-list-create"
+                        t-on-click="addTask"
+                    >New</button>
                 </div>
             </div>
 
@@ -21,7 +24,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr t-foreach="state.taskList" t-as="task" t-key="task.id" class="todo-item" >
+                            <tr
+                                t-foreach="state.taskList"
+                                t-as="task"
+                                t-key="task.id"
+                                class="todo-item"
+                            >
                                 <td>
                                     <input
                                         class="form-check-input todo-item-completed"
