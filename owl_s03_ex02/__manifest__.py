@@ -11,6 +11,9 @@
         "web.assets_backend": [
             "owl_s03_ex02/static/src/components/**/*.js",
         ],
+        "web.assets_unit_tests": [
+            "owl_s03_ex02/static/tests/**/*",
+        ],
     },
     "application": True,
 }
