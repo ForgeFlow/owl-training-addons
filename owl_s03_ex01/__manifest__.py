@@ -14,6 +14,9 @@
             "owl_s03_ex01/static/src/components/*.js",
             "owl_s03_ex01/static/src/components/*.xml",
         ],
+        "web.assets_unit_tests": [
+            "owl_s03_ex01/static/tests/**/*",
+        ],
     },
     "installable": True,
     "application": False,
