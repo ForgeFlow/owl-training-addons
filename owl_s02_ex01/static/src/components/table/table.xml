@@ -14,7 +14,7 @@
                     <tbody>
                         <tr t-foreach="props.data" t-as="row" t-key="row.month">
                             <td t-esc="row.month" />
-                            <td t-esc="row.count" />
+                            <td class="table_count" t-esc="row.count" />
                         </tr>
                     </tbody>
                 </table>

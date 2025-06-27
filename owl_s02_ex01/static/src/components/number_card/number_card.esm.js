@@ -6,5 +6,6 @@ export class NumberCard extends Component {
         title: {type: String},
         subtitle: {type: String},
         value: {type: Number},
+        extraClass: {type: String},
     };
 }
