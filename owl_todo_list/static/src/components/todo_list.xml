@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="owl_todo_list.OwlTodoList">
+        <div class="todo-list-container">
+            <div class="row">
+                <div class="col">
+                    <button
+                        class="btn btn-primary"
+                        t-on-click="addTask"
+                    >New</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Task</th>
+                                <th scope="col">Color</th>
+                                <th scope="col">Priority</th>
+                                <th scope="col">Completed</th>
+                                <th scope="col"/>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="state.taskList" t-as="task" t-key="task.id">
+                                <td>
+                                    <div>
+                                        <span t-esc="task.name" />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <span t-esc="task.color" />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <span t-esc="task.priority" />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <span t-esc="task.completed" />
+                                    </div>
+                                </td>
+                                <td>
+                                    <button
+                                        class="btn btn-secondary"
+                                        t-on-click="()=>this.editTask(task)"
+                                    >
+                                        Edit
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>
