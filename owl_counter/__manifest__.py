@@ -8,6 +8,13 @@
     "depends": ["web"],
     "data": [
         "security/ir.model.access.csv",
+        "views/counter.xml",
     ],
+    "assets": {
+        "web.assets_backend": [
+            "owl_counter/static/src/components/**/*.js",
+            "owl_counter/static/src/components/**/*.xml",
+        ],
+    },
     "application": True,
 }

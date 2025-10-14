@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="owl_counter.Counter">
+        <div>
+            <div class="counters-container">
+                <div class="row">
+                    <div class="col">
+                        <button
+                            class="btn btn-primary"
+                            t-on-click="addCounter"
+                        >New</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Count</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr
+                                    t-foreach="state.counterList"
+                                    t-as="counter"
+                                    t-key="counter.id"
+                                >
+                                 <td>
+                                     <div>
+                                         <span t-esc="counter.name"/>
+                                     </div>
+                                 </td>
+                                 <td>
+                                     <div>
+                                         <span t-esc="counter.count"/>
+                                     </div>
+                                 </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>
