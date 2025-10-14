@@ -10,12 +10,14 @@ export class OwlTodoList extends Component {
         this.dialogService=useService("dialog");
         this.action = useService("action");
         this.notification= useService("notification");
+        this.priorityOptions = [];
         this.state = useState({
             taskList: [],
         });
 
         onWillStart( async()=> {
             await this.getAllTasks();
+            this.priorityOptions = await this.orm.call(this.model, "get_priority_options", []);
         })
     }
 
@@ -62,7 +64,9 @@ export class OwlTodoList extends Component {
     async updateColor(e, task){
         await this.orm.write(this.model, [task.id], {color: e.target.value});
     }
-
+    async updatePriority(e, task){
+        await this.orm.write(this.model, [task.id], {priority: e.target.value});
+    }
 }
 OwlTodoList.template = "owl_todo_list.OwlTodoList";
 registry.category("actions").add("owl_todo_list.action_todo_list_js", OwlTodoList)
