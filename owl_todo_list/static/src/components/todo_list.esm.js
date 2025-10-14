@@ -8,7 +8,8 @@ export class OwlTodoList extends Component {
         this.model="todo.item";
         this.orm=useService("orm");
         this.dialogService=useService("dialog");
-
+        this.action = useService("action");
+        this.notification= useService("notification");
         this.state = useState({
             taskList: [],
         });
@@ -43,6 +44,25 @@ export class OwlTodoList extends Component {
     editTask(task) {
         this._openForm(task.id);
     }
+    openInForm(task) {
+        this.action.doAction({
+            type: "ir.actions.act_window",
+            res_model: this.model,
+            res_id: task.id,
+            views: [[false, "form"]],
+            target: "current",
+        });
+    }
+    async toggleTask(e, task){
+        await this.orm.write(this.model, [task.id], {completed: e.target.checked});
+        this.notification.add(e.target.checked ? "Task marked as completed" : "Task marked as incomplete",
+            {type: e.target.checked ? "success" : "danger"}
+        );
+    }
+    async updateColor(e, task){
+        await this.orm.write(this.model, [task.id], {color: e.target.value});
+    }
+
 }
 OwlTodoList.template = "owl_todo_list.OwlTodoList";
 registry.category("actions").add("owl_todo_list.action_todo_list_js", OwlTodoList)
