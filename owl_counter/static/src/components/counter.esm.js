@@ -29,6 +29,15 @@ export class Counter extends Component {
         counter.count += 1;
         await this.orm.write(this.model, [counter.id], {count: counter.count});
     }
+
+    async deleteCounter(counter) {
+        await this.orm.unlink(this.model, [counter.id]);
+        await this.loadCount();
+    }
+
+    async updateName(e, counter) {
+        await this.orm.write(this.model, [counter.id], {name: e.target.value});
+    }
 }
 Counter.template = "owl_counter.Counter";
 registry.category("actions").add("owl_counter.action_counter_list", Counter)
