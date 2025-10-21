@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="owl_s03_ex01.HashGeneratorField">
+        <t t-if="props.readonly">
+            <span t-esc="props.record.data[props.name]" />
+        </t>
+        <t t-else="">
+            <div class="d-inline-flex w-100">
+                <input class="o_input" type="text" t-att-value="value" t-ref="input" />
+                <button
+                    t-if="!props.record.data[props.name]"
+                    class="btn btn-secondary ms-3 fa fa-magic o_generate_hash_button"
+                    title="Generate Hash"
+                    t-on-click="generateHash"
+                />
+            </div>
+        </t>
+    </t>
+
+</templates>
