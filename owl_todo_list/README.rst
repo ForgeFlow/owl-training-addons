@@ -53,7 +53,7 @@ Authors
 Contributors
 ------------
 
--  ForgeFlow Team.
+- ForgeFlow Team.
 
 Maintainers
 -----------

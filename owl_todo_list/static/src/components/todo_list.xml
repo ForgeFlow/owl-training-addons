@@ -2,12 +2,12 @@
 <templates xml:space="preserve">
 
     <t t-name="owl_todo_list.OwlTodoList">
-        <div>
+        <div class="todo-list-container">
             <div>
                 <div class="row">
                     <div class="col">
                         <button
-                            class="btn btn-primary"
+                            class="btn btn-primary o_button_add_task"
                             t-on-click="addTask"
                         >New</button>
                     </div>
@@ -29,16 +29,22 @@
                                     t-foreach="state.taskList"
                                     t-as="task"
                                     t-key="task.id"
+                                    class="todo-list-item"
                                 >
                                     <td>
                                         <div>
-                                            <a href="#" t-on-click="()=>this.openInForm(task)" t-esc="task.name"/>
+                                            <a
+                                                href="#"
+                                                t-on-click="()=>this.openInForm(task)"
+                                                t-esc="task.name"
+                                            />
                                         </div>
                                     </td>
                                     <td>
                                         <div>
                                             <input
                                                 type="color"
+                                                name="color"
                                                 class="form-control"
                                                 t-att-value="task.color"
                                                 t-on-change="(e)=>this.updateColor(e, task)"
@@ -47,11 +53,11 @@
                                     </td>
                                     <td>
                                         <div>
-                                           <Selector
+                                            <Selector
                                                 value="task.priority"
                                                 options="priorityOptions"
                                                 onChange.bind="(e)=>this.updatePriority(e, task)"
-                                           />
+                                            />
                                         </div>
                                     </td>
                                     <td>
@@ -60,6 +66,7 @@
                                                 class="form-check-input"
                                                 type="checkbox"
                                                 t-att-id="task.id"
+                                                name="completed"
                                                 t-att-checked="task.completed"
                                                 t-on-click="(e)=>this.toggleTask(e, task)"
                                             />

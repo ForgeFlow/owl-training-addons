@@ -1,4 +1,4 @@
-from odoo import fields, models, api
+from odoo import api, fields, models
 
 
 class TodoItem(models.Model):
@@ -23,6 +23,6 @@ class TodoItem(models.Model):
         priority_list = []
 
         for key, value in self._fields["priority"].selection:
-            priority_list.append({"value":str(key), "text":value })
+            priority_list.append({"value": str(key), "text": value})
 
         return priority_list

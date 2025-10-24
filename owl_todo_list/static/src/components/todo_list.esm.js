@@ -1,8 +1,8 @@
-import { Component, useState, onWillStart } from "@odoo/owl";
-import { useService } from "@web/core/utils/hooks";
+import {Component, onWillStart, useState} from "@odoo/owl";
+import {useService} from "@web/core/utils/hooks";
 import {FormViewDialog} from "@web/views/view_dialogs/form_view_dialog";
-import { registry } from "@web/core/registry";
-import { Selector } from "./selector/selector.esm";
+import {registry} from "@web/core/registry";
+import {Selector} from "./selector/selector.esm";
 
 export class OwlTodoList extends Component {
     setup() {
@@ -22,26 +22,30 @@ export class OwlTodoList extends Component {
                 this.model,
                 "get_priority_options",
                 []
-            )
-        })
+            );
+        });
     }
 
     async getAllTasks() {
-        this.state.taskList = await this.orm.searchRead(this.model, [], ["name", "color", "completed", "priority"])
+        this.state.taskList = await this.orm.searchRead(
+            this.model,
+            [],
+            ["name", "color", "completed", "priority"]
+        );
     }
 
-    async _openForm(resid=false) {
+    async _openForm(resid = false) {
         const result = await new Promise((resolve) => {
             this.dialogService.add(
                 FormViewDialog,
                 {
                     resModel: this.model,
-                    resId:resid,
+                    resId: resid,
                     title: resid ? "Edit Task" : "New Task",
                     preventCreate: false,
                     onRecordSaved: () => resolve(true),
                 },
-                {onClose: ()=> resolve(false)}
+                {onClose: () => resolve(false)}
             );
         });
         if (result) await this.getAllTasks();
@@ -55,15 +59,15 @@ export class OwlTodoList extends Component {
         this._openForm(task.id);
     }
     async updatePriority(e, task) {
-        await this.orm.write(this.model, [task.id], {priority: e.target.value})
+        await this.orm.write(this.model, [task.id], {priority: e.target.value});
     }
     openInForm(task) {
         this.action.doAction({
-           type: "ir.actions.act_window",
-           res_model: this.model,
-           res_id: task.id,
-           views: [[false, "form"]],
-           target: "current",
+            type: "ir.actions.act_window",
+            res_model: this.model,
+            res_id: task.id,
+            views: [[false, "form"]],
+            target: "current",
         });
     }
 
@@ -72,7 +76,7 @@ export class OwlTodoList extends Component {
         this.notification.add(
             e.target.checked ? "Task marked completed" : "Task marked incompleted",
             {type: e.target.checked ? "success" : "danger"}
-        )
+        );
     }
 
     async updateColor(e, task) {
@@ -80,6 +84,6 @@ export class OwlTodoList extends Component {
     }
 }
 OwlTodoList.template = "owl_todo_list.OwlTodoList";
-OwlTodoList.components = { Selector };
+OwlTodoList.components = {Selector};
 
 registry.category("actions").add("owl_todo_list.action_todo_list_js", OwlTodoList);
