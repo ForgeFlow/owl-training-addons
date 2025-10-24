@@ -14,6 +14,9 @@
             "owl_range_widget/static/src/components/*.js",
             "owl_range_widget/static/src/components/*.xml",
         ],
+        "web.assets_unit_tests": [
+            "owl_range_widget/static/tests/**/*",
+        ],
     },
     "installable": True,
     "application": False,
