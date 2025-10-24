@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col">
                         <button
-                            class="btn btn-primary"
+                            class="btn btn-primary o_counter_add_counter"
                             t-on-click="addCounter"
                         >New</button>
                     </div>
@@ -18,7 +18,7 @@
                                 <tr>
                                     <th scope="col">Name</th>
                                     <th scope="col">Count</th>
-                                    <th scope="col"/>
+                                    <th scope="col" />
                                 </tr>
                             </thead>
                             <tbody>
@@ -27,31 +27,35 @@
                                     t-as="counter"
                                     t-key="counter.id"
                                 >
-                                    <td>
+                                    <td
+                                        style="vertical-align: middle;"
+                                        class="o_counter_element"
+                                    >
                                         <div>
                                             <input
                                                 t-model="counter.name"
-                                                class="form-control"
+                                                class="form-control o_counter_element_name"
                                                 t-on-change="(e)=>this.updateName(e, counter)"
                                             />
                                         </div>
                                     </td>
                                     <td>
                                         <div>
-                                            <span t-esc="counter.count"/>
+                                            <span
+                                                t-esc="counter.count"
+                                                class="o_counter_element_count"
+                                            />
                                         </div>
                                     </td>
-                                    <td>
-                                        <div>
-                                            <button
-                                                class="btn btn-warning"
-                                                t-on-click="()=>this.increment(counter)"
-                                            >Increment</button>
-                                            <button
-                                                class="btn btn-danger"
-                                                t-on-click="()=>this.deleteCounter(counter)"
-                                            >Delete</button>
-                                        </div>
+                                    <td style="text-align: right">
+                                        <button
+                                            class="btn btn-warning o_counter_element_increment"
+                                            t-on-click="()=>this.increment(counter)"
+                                        >Increment</button>
+                                        <button
+                                            class="btn btn-danger o_counter_element_delete"
+                                            t-on-click="()=>this.deleteCounter(counter)"
+                                        >Delete</button>
                                     </td>
                                 </tr>
                             </tbody>

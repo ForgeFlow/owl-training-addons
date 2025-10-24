@@ -1,14 +1,13 @@
-import { Component, onWillStart, useState } from "@odoo/owl";
-import { useService } from "@web/core/utils/hooks";
-import { registry } from "@web/core/registry";
+import {Component, onWillStart, useState} from "@odoo/owl";
+import {useService} from "@web/core/utils/hooks";
+import {registry} from "@web/core/registry";
 
 export class Counter extends Component {
-
     setup() {
         this.model = "my.counter";
         this.orm = useService("orm");
         this.state = useState({
-           counterList: [],
+            counterList: [],
         });
 
         onWillStart(async () => {
@@ -17,7 +16,11 @@ export class Counter extends Component {
     }
 
     async loadCount() {
-        this.state.counterList = await this.orm.searchRead(this.model, [], ["name", "count"]);
+        this.state.counterList = await this.orm.searchRead(
+            this.model,
+            [],
+            ["name", "count"]
+        );
     }
 
     async addCounter() {
@@ -40,4 +43,4 @@ export class Counter extends Component {
     }
 }
 Counter.template = "owl_counter.Counter";
-registry.category("actions").add("owl_counter.action_counter_list", Counter)
+registry.category("actions").add("owl_counter.action_counter_list", Counter);
