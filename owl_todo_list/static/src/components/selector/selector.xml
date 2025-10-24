@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <templates xml:space="preserve">
     <t t-name="owl_todo_list.Selector">
-         <select
+        <select
             class="form-select"
             t-att-value="props.value"
             t-on-change="props.onChange"
         >
-            <t
-                t-foreach="props.options"
-                t-as="option"
-                t-key="option.value"
-            >
+            <t t-foreach="props.options" t-as="option" t-key="option.value">
                 <option
                     t-att-selected="option.priority == props.value"
                     t-att-value="option.value"
