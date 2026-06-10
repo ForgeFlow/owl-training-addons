@@ -31,12 +31,17 @@
                                 >
                                     <td>
                                         <div>
-                                            <span t-esc="task.name"/>
+                                            <a href="#" t-on-click="()=>this.openInForm(task)" t-esc="task.name"/>
                                         </div>
                                     </td>
                                     <td>
                                         <div>
-                                            <span t-esc="task.color"/>
+                                            <input
+                                                type="color"
+                                                class="form-control"
+                                                t-att-value="task.color"
+                                                t-on-change="(e)=>this.updateColor(e, task)"
+                                            />
                                         </div>
                                     </td>
                                     <td>
@@ -58,9 +63,13 @@
                                         </select>
                                     </td>
                                     <td>
-                                        <div>
-                                            <span t-esc="task.completed"/>
-                                        </div>
+                                        <input
+                                            class="form-check-input"
+                                            type="checkbox"
+                                            t-att-id="task.id"
+                                            t-att-checked="task.completed"
+                                            t-on-click="(e)=>this.toggleTask(e, task)"
+                                        />
                                     </td>
                                     <td>
                                         <button
