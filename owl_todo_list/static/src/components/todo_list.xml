@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="owl_todo_list.OwlTodoList">
+        <div>
+            <div>
+                <div class="row">
+                    <div class="col">
+                        <button
+                            class="btn btn-primary"
+                            t-on-click="addTask"
+                        >New Task</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Task</th>
+                                    <th scope="col">Color</th>
+                                    <th scope="col">Priority</th>
+                                    <th scope="col">Completed</th>
+                                    <th scope="col" />
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr
+                                    t-foreach="state.taskList"
+                                    t-as="task"
+                                    t-key="task.id"
+                                >
+                                    <td>
+                                        <div>
+                                            <a
+                                                href="#"
+                                                t-on-click="()=>this.openInForm(task)"
+                                                t-esc="task.name"
+                                            />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <input
+                                                type="color"
+                                                class="form-control"
+                                                t-att-value="task.color"
+                                                t-on-change="(e)=>this.updateColor(e, task)"
+                                            />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <Selector
+                                            value="task.priority"
+                                            options="priorityOptions"
+                                            onChange.bind="(e)=>this.updatePriority(e, task)"
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            class="form-check-input"
+                                            type="checkbox"
+                                            t-att-id="task.id"
+                                            t-att-checked="task.completed"
+                                            t-on-click="(e)=>this.toggleTask(e, task)"
+                                        />
+                                    </td>
+                                    <td>
+                                        <button
+                                            class="btn btn-secondary"
+                                            t-on-click="()=>this.editTask(task)"
+                                        >Edit</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>
