@@ -5,5 +5,12 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form" />
         <field name="priority" eval="18" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='email']" position="attributes">
+                <attribute
+                    name="options"
+                >{'colorProps': '#bb5034', 'bgColorProps': '#faf0f0'}</attribute>
+            </xpath>
+        </field>
     </record>
 </odoo>
