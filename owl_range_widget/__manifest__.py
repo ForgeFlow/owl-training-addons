@@ -9,6 +9,12 @@
     "data": [
         "views/res_partner.xml",
     ],
+    "assets": {
+        "web.assets_backend": [
+            "owl_range_widget/static/src/components/*.js",
+            "owl_range_widget/static/src/components/*.xml",
+        ],
+    },
     "installable": True,
     "application": False,
 }
